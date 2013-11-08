@@ -83,7 +83,7 @@ sliderDirective = ($timeout) ->
             boundToInputs = false
             ngDocument = angularize document
             unless attributes.translate
-                scope.translate = (value) -> value.value
+                scope.translate = (value) -> roundStep(value.value, parseInt(scope.precision), parseFloat(scope.step), parseFloat(scope.floor))
 
             pointerHalfWidth = barWidth = minOffset = maxOffset = minValue = maxValue = valueRange = offsetRange = undefined
 
@@ -193,7 +193,6 @@ sliderDirective = ($timeout) ->
                                     ref = refLow 
                                     maxPtr.removeClass 'active'
                                     minPtr.addClass 'active'
-                        newValue = roundStep(newValue, parseInt(scope.precision), parseFloat(scope.step), parseFloat(scope.floor))
                         scope[ref] = newValue
                         scope.$apply()
                     onStart = (event) ->

@@ -134,7 +134,7 @@
             ngDocument = angularize(document);
             if (!attributes.translate) {
               scope.translate = function(value) {
-                return value.value;
+                return roundStep(value.value, parseInt(scope.precision), parseFloat(scope.step), parseFloat(scope.floor));
               };
             }
             pointerHalfWidth = barWidth = minOffset = maxOffset = minValue = maxValue = valueRange = offsetRange = void 0;
@@ -273,7 +273,6 @@
                       }
                     }
                   }
-                  newValue = roundStep(newValue, parseInt(scope.precision), parseFloat(scope.step), parseFloat(scope.floor));
                   scope[ref] = newValue;
                   return scope.$apply();
                 };
