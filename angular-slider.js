@@ -139,16 +139,11 @@
             }
             pointerHalfWidth = barWidth = minOffset = maxOffset = minValue = maxValue = valueRange = offsetRange = void 0;
             dimensions = function() {
-              var value, _j, _len1;
               if (scope.precision == null) {
                 scope.precision = 0;
               }
               if (scope.step == null) {
                 scope.step = 1;
-              }
-              for (_j = 0, _len1 = watchables.length; _j < _len1; _j++) {
-                value = watchables[_j];
-                scope[value] = roundStep(parseFloat(scope[value]), parseInt(scope.precision), parseFloat(scope.step), parseFloat(scope.floor));
               }
               scope.diff = roundStep(scope[refHigh] - scope[refLow], parseInt(scope.precision), parseFloat(scope.step), parseFloat(scope.floor));
               pointerHalfWidth = halfWidth(minPtr);
